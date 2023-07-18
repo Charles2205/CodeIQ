@@ -6,3 +6,10 @@
 .theme-Color{
     color: #D95A11;
 }
+
+hr{
+    width: 10%;
+   position: relative;
+   left: 45%;
+    /* border-top-color: rgba(117, 117, 117, 0.09) */
+}
