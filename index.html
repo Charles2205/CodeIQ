@@ -6,7 +6,7 @@
     <title>Quiz App</title>
     <link rel="shortcut icon" href="./public/imgs/Fav-Icon .png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./public/css/home.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
             <img src="./public/imgs/Main-Logo .png" alt="Main-Logo">  
 </div>
 <div class="container">
-    <h1 class="text-center">
+    <h1 class="text-center text-white">
         Howdy? Welcome to our app.
         <h2 class="text-center">
             The Quiz includes a wide number of <span class="theme-Color" id="typeWriter"></span> questions
@@ -24,9 +24,11 @@
     <div class="container text-center my-5">
         <h1 class="theme-Color">Our Topics</h1>
         <hr>
-        <h3>Test your skills with our top topics with a variety of questions set for beginners and seniors alike!</h3>
+        <h3 class="text-white">
+            Test your skills with our top topics with a variety of questions set for beginners and seniors alike!
+        </h3>
     </div>
-        <div class="   text-center">
+        <div class="text-center my-5">
                 <div class="row justify-content-around">
                     <div class="col">
                         <a href="./public/pages/hPage.html" type="button"  class="btn btn-primary">Common HTML  <br>Questions</a>
@@ -54,14 +56,17 @@
         </div>
         
     <!-- footer details -->
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-        <p>© 2023 Company, Inc. All rights reserved.</p>
-        <ul class="list-unstyled d-flex">
-          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-          <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-        </ul>
-      </div>
+    <div class="container py-5   ">
+        <div class="d-flex flex-column flex-sm-row justify-content-between  my-2 border-top fs-5 ">
+            <p>© 2023 Company, Inc. All rights reserved.</p>
+            <!-- <ul class="list-unstyled d-flex">
+              <li class="fs-4"><i class="bi bi-facebook"></i></li>
+              <li class="fs-4"><i class="bi bi-instagram"></i></li>
+              <li class="fs-4"><i class="bi bi-twitter"></i></li>
+              <li class="fs-4"><i class="bi bi-youtube"></i></li>
+            </ul> -->
+          </div>
+    </div>
 </div>
 <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 <script src="./public/js/typewriter.js"></script>
