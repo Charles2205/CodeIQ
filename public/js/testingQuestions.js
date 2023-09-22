@@ -16,44 +16,20 @@ const questions = async () => {
   console.log(data);
   questionTag.innerHTML = `
     <h2 class="my-5">${data.question.text}</h2>
-        <div class="form-check fs-3 ">
-            <input class="form-check-input" type="radio" value="${answers.answer_a}" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-            ${
-              answers.answer_a.startsWith("<")
-                ? "<code>"+ answers.answer_a.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</code>"
-                : answers.answer_a
-            }   
-            </label>
-          </div>
+    <div class="form-check fs-3 ">
+    <input class="form-check-input" type="radio" value="${data.incorrectAnswers}" name="flexRadioDefault" id="flexRadioDefault1">
+    <label class="form-check-label" for="flexRadioDefault1">
+    </label>
+  </div><div class="form-check fs-3 ">
+  <input class="form-check-input" type="radio" value="${data.incorrectAnswers[1]}" name="flexRadioDefault" id="flexRadioDefault1">
+  <label class="form-check-label" for="flexRadioDefault1">
+  </label>
+</div>
 
-          <div class="form-check fs-3">
-            <input class="form-check-input" type="radio" value="${answers.answer_b}" name="flexRadioDefault" id="flexRadioDefault2" >
-            <label class="form-check-label" for="flexRadioDefault2">
-            ${answers.answer_b.startsWith("<")
-                ? "<code>"+ answers.answer_b.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</code>"
-                : answers.answer_b}
-            </label>
-          </div>
+         
 
-          <div class="form-check fs-3">
-            <input class="form-check-input" type="radio" value="${answers.answer_c}" name="flexRadioDefault" id="flexRadioDefault3" checked>
-            <label class="form-check-label" for="flexRadioDefault3">
-            ${answers.answer_c.startsWith("<")
-                ? "<code>"+ answers.answer_c.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</code>"
-                : answers.answer_c} 
-            </label>
-          </div>
+          
 
-          <div class="form-check fs-3">
-            <input class="form-check-input" type="radio" value="${answers.answer_d}" name="flexRadioDefault" id="flexRadioDefault4" checked>
-            <label class="form-check-label" for="flexRadioDefault4">
-            ${
-                answers.answer_d.startsWith("<")
-                ? "<code>"+ answers.answer_d.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</code>"
-                : answers.answer_d}
-            </label>
-          </div>
 
           
         </div>
@@ -62,9 +38,9 @@ const questions = async () => {
     
     `;
   clearSelection();
-  console.log(questionTag);
+  
   storeQuestions.push(data.id)
-  console.log(storeQuestions);
+  console.log(data.incorrectAnswers[0]);  
 };
 questions();
 
