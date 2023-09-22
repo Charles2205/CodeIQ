@@ -1,5 +1,7 @@
+
 // fetching data from the api endpoint
 const API_KEY = "vKI5iIXDiOGE7eVu9K6mDGiMaXKZwGvD9UKk6JiR";
+let storeQuestions =[]
 const quizQuestions = async () => {
   return await axios.get(
     `https://the-trivia-api.com/v2/questions`
@@ -8,6 +10,7 @@ const quizQuestions = async () => {
 
 // generate Questions
 const questionTag = document.querySelector("#question-tag");
+// function to generate Question
 const questions = async () => {
   let { data } = await quizQuestions();
   data = data[0];
@@ -72,11 +75,14 @@ const questions = async () => {
     
     `;
   clearSelection();
-  console.log(questionTag);
+  // console.log(questionTag);
+  storeQuestions.push(data.id)
+  console.log(storeQuestions);
 };
 questions();
 
 const btnClear = document.querySelector("#btnClear");
+const btnNext = document.querySelector("#btnNext");
 // clear selection function
 function clearSelection() {
   var radioButtons = document.getElementsByName("flexRadioDefault");
@@ -86,3 +92,4 @@ function clearSelection() {
 }
 
 btnClear.addEventListener("click", clearSelection);
+btnNext.addEventListener("click",questions);

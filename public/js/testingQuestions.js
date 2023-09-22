@@ -1,23 +1,23 @@
 // fetching data from the api endpoint
 const API_KEY = "vKI5iIXDiOGE7eVu9K6mDGiMaXKZwGvD9UKk6JiR";
+let storeQuestions =[]
 const quizQuestions = async () => {
   return await axios.get(
-    `https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&category=code&difficulty=Easy&limit=1&tags=HTML`
+    `https://the-trivia-api.com/v2/questions/`
   );
 };
 
 // generate Questions
 const questionTag = document.querySelector("#question-tag");
+// function to generate Question
 const questions = async () => {
   let { data } = await quizQuestions();
   data = data[0];
-  let answers = data.answers;
-  console.log(answers);
   console.log(data);
   questionTag.innerHTML = `
-    <h2 class="my-5">${data.question}</h2>
-        <div class="form-check fs-3">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+    <h2 class="my-5">${data.question.text}</h2>
+        <div class="form-check fs-3 ">
+            <input class="form-check-input" type="radio" value="${answers.answer_a}" name="flexRadioDefault" id="flexRadioDefault1">
             <label class="form-check-label" for="flexRadioDefault1">
             ${
               answers.answer_a.startsWith("<")
@@ -28,7 +28,7 @@ const questions = async () => {
           </div>
 
           <div class="form-check fs-3">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+            <input class="form-check-input" type="radio" value="${answers.answer_b}" name="flexRadioDefault" id="flexRadioDefault2" >
             <label class="form-check-label" for="flexRadioDefault2">
             ${answers.answer_b.startsWith("<")
                 ? "<code>"+ answers.answer_b.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</code>"
@@ -37,7 +37,7 @@ const questions = async () => {
           </div>
 
           <div class="form-check fs-3">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+            <input class="form-check-input" type="radio" value="${answers.answer_c}" name="flexRadioDefault" id="flexRadioDefault3" checked>
             <label class="form-check-label" for="flexRadioDefault3">
             ${answers.answer_c.startsWith("<")
                 ? "<code>"+ answers.answer_c.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</code>"
@@ -46,7 +46,7 @@ const questions = async () => {
           </div>
 
           <div class="form-check fs-3">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+            <input class="form-check-input" type="radio" value="${answers.answer_d}" name="flexRadioDefault" id="flexRadioDefault4" checked>
             <label class="form-check-label" for="flexRadioDefault4">
             ${
                 answers.answer_d.startsWith("<")
@@ -55,17 +55,7 @@ const questions = async () => {
             </label>
           </div>
 
-          <div class="form-check fs-3">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
-            <label class="form-check-label" for="flexRadioDefault5">
-            ${ 
-                answers.answer_d.startsWith("<")
-                ? "<code>"+ answers.answer_e.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</code>"
-                : answers.answer_e
-            }
-            
-            </label>
-          </div>
+          
         </div>
     
     
@@ -73,10 +63,14 @@ const questions = async () => {
     `;
   clearSelection();
   console.log(questionTag);
+  storeQuestions.push(data.id)
+  console.log(storeQuestions);
 };
 questions();
 
+
 const btnClear = document.querySelector("#btnClear");
+const btnNext = document.querySelector("#btnNext");
 // clear selection function
 function clearSelection() {
   var radioButtons = document.getElementsByName("flexRadioDefault");
@@ -86,3 +80,19 @@ function clearSelection() {
 }
 
 btnClear.addEventListener("click", clearSelection);
+  // btnNext.addEventListener("click",questions);
+  btnNext.addEventListener("click",getSelectedOptions )
+
+// function to determine the options selected by the user
+async function getSelectedOptions(){
+  let { data } = await quizQuestions();
+  const radioButtons =document.getElementsByName("flexRadioDefault")
+  for(const radioButton of radioButtons) {
+    if(radioButton.checked){
+      let userAnswer =radioButton
+      console.log(userAnswer);
+      return
+    }
+  }
+}
+
