@@ -17,7 +17,7 @@ const questions = async () => {
   questionTag.innerHTML = `
     <h2 class="my-5">${data.question.text}</h2>
     <div class="form-check fs-3 ">
-    <input class="form-check-input" type="radio" value="${data.incorrectAnswers}" name="flexRadioDefault" id="flexRadioDefault1">
+    <input class="form-check-input" type="radio" value="${data}" name="flexRadioDefault" id="flexRadioDefault1">
     <label class="form-check-label" for="flexRadioDefault1">
     </label>
   </div><div class="form-check fs-3 ">
